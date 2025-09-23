@@ -1,0 +1,643 @@
+<!--Looks like you're ready to get making with Pitt Fuego Webtext Generator. Good luck. Let's remember a few basics:
+
+1. If you haven't worked through an introductory project like "I Am...A Project in Becoming," please do so. It will give you the basic skills to use this webtext generator.
+2. Use HTML5 compatible file formats.
+3. Reduce image size when possible. 
+4. Keep asset names simple and machine readable. We recommend camelCase. 
+5. Match asset name and file type in your code. Be case sensitive. 
+6. Consider accessibility: Use alt-text to describe images for the visually impaired, be descriptive when labeling links, and use clear button language. 
+7. Be respectful of your own and others' privacy. 
+8. Consult W3 or Stack Overflow when our code is not working or you need it to do something more than it's doing.
+9. When you make a mistake, Control Z, Control Z, Control Z...
+10. Publish, share, spread the love!-->
+
+<!--BTW. You can leave these hidden HTML text fields be, or delete them. They are but road signs, absent from the larger design-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Pitt Fuego</title>
+<link rel="icon" type="image/jpg" href="favicon.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<!--We've added Google Fonts to The Webtext Generator. Go to https://www.w3schools.com/howto/howto_google_fonts.asp to find fonts and add them to this stylesheet link and to the html selector on style.css-->
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+
+
+<body>
+
+<!--To adjust hero image and text, find hero-image class on style.css-->
+<div class="hero-image">
+  <div class="hero-text">
+      <h1>Title</h1>
+      <div class="button-box">
+    <a href="page 3.html" class="button">Go to Fuego</a>
+  </div>
+  </div>
+</div>
+
+<!--To build your webtext, copy the code snippet (provided below) and paste into the <body> section below this line.-->
+
+<style>
+.ocean {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg,#8fd1ff 0%,#4aa0e6 55%,#2364a6 100%);
+}
+
+/* layered SVG waves */
+.wave {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 40vh;
+  bottom: -2vh;
+  opacity: 0.6;
+  will-change: transform;
+}
+
+.wave.wave1 { bottom: -6vh; opacity: 0.6; fill: rgba(255,255,255,0.18); animation: waveMove 14s linear infinite; }
+.wave.wave2 { bottom: -1vh; opacity: 0.45; fill: rgba(255,255,255,0.12); animation: waveMove 10s linear infinite reverse; }
+.wave.wave3 { bottom: 4vh; opacity: 0.35; fill: rgba(255,255,255,0.08); animation: waveMove 18s linear infinite; transform-origin:center bottom; }
+
+@keyframes waveMove {
+  0%   { transform: translateX(-50%) translateY(0); }
+  50%  { transform: translateX(-60%) translateY(-8px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* ensure page content sits above the ocean */
+.page-content {
+  position: relative;
+  z-index: 2;
+}
+</style>
+
+<div class="ocean" aria-hidden="true">
+  <svg class="wave wave1" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 120 C150 200 350 40 600 110 C850 180 1050 60 1200 130 L1200 200 L0 200 Z"></path>
+  </svg>
+
+  <svg class="wave wave2" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 100 C180 20 320 180 600 120 C880 60 1020 160 1200 90 L1200 200 L0 200 Z"></path>
+  </svg>
+
+  <svg class="wave wave3" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 140 C120 80 300 200 600 140 C900 80 1060 200 1200 140 L1200 200 L0 200 Z"></path>
+  </svg>
+</div>
+<style>
+.fish {
+  position: fixed;
+  z-index: 3;
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, left;
+}
+
+/* individual fish sizes/positions/speeds */
+.fish.f1 { width: 80px; height: 40px; bottom: 18vh; left: -120px; animation: swimR 14s linear infinite; }
+.fish.f2 { width: 60px; height: 30px; bottom: 30vh; left: 110vw; animation: swimL 11s linear infinite; opacity:0.9; }
+.fish.f3 { width: 100px; height: 50px; bottom: 10vh; left: -140px; animation: swimR 18s linear infinite; opacity:0.85; animation-delay: 2s; }
+.fish.f4 { width: 50px; height: 25px; bottom: 40vh; left: 110vw; animation: swimL 9s linear infinite; opacity:0.8; animation-delay: 1s; }
+.fish.f5 { width: 70px; height: 35px; bottom: 25vh; left: -100px; animation: swimR 13s linear infinite; opacity:0.95; animation-delay: 4s; }
+
+@keyframes swimR {
+  0%   { left: -18vw; transform: translateY(0) scaleX(1) rotate(0deg); }
+  25%  { transform: translateY(-6px) scaleX(1) rotate(-3deg); }
+  50%  { transform: translateY(0) scaleX(1) rotate(0deg); }
+  75%  { transform: translateY(6px) scaleX(1) rotate(3deg); }
+  100% { left: 118vw; transform: translateY(0) scaleX(1) rotate(0deg); }
+}
+
+@keyframes swimL {
+  0%   { left: 118vw; transform: translateY(0) scaleX(-1) rotate(0deg); }
+  25%  { transform: translateY(-6px) scaleX(-1) rotate(-3deg); }
+  50%  { transform: translateY(0) scaleX(-1) rotate(0deg); }
+  75%  { transform: translateY(6px) scaleX(-1) rotate(3deg); }
+  100% { left: -18vw; transform: translateY(0) scaleX(-1) rotate(0deg); }
+}
+</style>
+
+<!-- Fish SVGs -->
+<div class="fish f1" aria-hidden="true">
+  <svg viewBox="0 0 80 40" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="40" cy="20" rx="26" ry="14" fill="#4fc3f7"/>
+    <polygon points="10,20 0,10 0,30" fill="#0288d1"/>
+    <polygon points="40,20 30,10 35,20" fill="#81d4fa"/>
+    <circle cx="55" cy="17" r="2" fill="#222"/>
+  </svg>
+</div>
+
+<div class="fish f2" aria-hidden="true">
+  <svg viewBox="0 0 60 30" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="30" cy="15" rx="18" ry="9" fill="#ffb74d"/>
+    <polygon points="5,15 0,5 0,25" fill="#f57c00"/>
+    <polygon points="30,15 22,7 25,15" fill="#ffe082"/>
+    <circle cx="42" cy="12" r="1.5" fill="#222"/>
+  </svg>
+</div>
+
+<div class="fish f3" aria-hidden="true">
+  <svg viewBox="0 0 100 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="25" rx="28" ry="15" fill="#81c784"/>
+    <polygon points="15,25 0,10 0,40" fill="#388e3c"/>
+    <polygon points="50,25 40,10 45,25" fill="#b2ff59"/>
+    <circle cx="70" cy="20" r="3" fill="#222"/>
+  </svg>
+</div>
+
+<div class="fish f4" aria-hidden="true">
+  <svg viewBox="0 0 50 25" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="25" cy="12.5" rx="12" ry="6.5" fill="#9ec9ff"/>
+    <polygon points="5,12.5 0,5 0,20" fill="#5ea6ff"/>
+    <circle cx="36" cy="11" r="1.2" fill="#222"/>
+  </svg>
+</div>
+
+<div class="fish f5" aria-hidden="true">
+  <svg viewBox="0 0 70 35" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="35" cy="17.5" rx="21" ry="11" fill="#ff8a65"/>
+    <polygon points="10,17.5 0,7 0,28" fill="#ff7043"/>
+    <circle cx="48" cy="16" r="2" fill="#222"/>
+  </svg>
+</div>
+
+div class="hero-image">
+  <div class="hero-text">
+      <h1></h1>
+      <div class="button-box">
+    <a href="page 3.html" class="button">next</a>
+  </div>
+  </div>
+
+<style>
+/* --- Bubbles: add after your fish styles --- */
+.bubble {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4; /* above fish (z-index:3) and waves (z-index:0) */
+  opacity: 0.7;
+  will-change: transform, bottom, opacity;
+  box-shadow: inset -6px -6px 12px rgba(255,255,255,0.25);
+  backdrop-filter: blur(0.5px);
+}
+
+/* sizes, positions, speeds */
+.bubble.b1 { width: 34px; height: 34px; left: 12vw; animation: bubbleRise 9s linear infinite; animation-delay: 0s; background: rgba(203,230,255,0.9);}
+.bubble.b2 { width: 22px; height: 22px; left: 24vw; animation: bubbleRise 7s linear infinite; animation-delay: 1.2s; background: rgba(170,215,255,0.85);}
+.bubble.b3 { width: 46px; height: 46px; left: 36vw; animation: bubbleRise 11s linear infinite; animation-delay: 0.6s; background: rgba(220,240,255,0.9);}
+.bubble.b4 { width: 18px; height: 18px; left: 48vw; animation: bubbleRise 6.5s linear infinite; animation-delay: 2s; background: rgba(190,225,255,0.8);}
+.bubble.b5 { width: 28px; height: 28px; left: 60vw; animation: bubbleRise 8.5s linear infinite; animation-delay: 0.4s; background: rgba(210,235,255,0.88);}
+.bubble.b6 { width: 20px; height: 20px; left: 72vw; animation: bubbleRise 7.8s linear infinite; animation-delay: 1.6s; background: rgba(180,220,255,0.82);}
+.bubble.b7 { width: 38px; height: 38px; left: 84vw; animation: bubbleRise 10.5s linear infinite; animation-delay: 0.9s; background: rgba(225,245,255,0.9);}
+.bubble.b8 { width: 26px; height: 26px; left: 92vw; animation: bubbleRise 8.2s linear infinite; animation-delay: 2.4s; background: rgba(200,230,255,0.86); }
+
+@keyframes bubbleRise {
+  0% {
+    bottom: -80px;
+    opacity: 0.0;
+    transform: translateX(0) scale(0.85);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-18px) scale(1) rotate(-6deg);
+  }
+  70% {
+    transform: translateX(14px) scale(1.05) rotate(6deg);
+    opacity: 0.7;
+  }
+  100% {
+    bottom: 110vh;
+    opacity: 0;
+    transform: translateX(0) scale(1.15);
+  }
+}
+</style>
+
+<!-- ...existing code... -->
+
+<!-- Bubbles HTML: add somewhere after your fish SVGs so they float above the waves -->
+<div class="bubble b1" aria-hidden="true"></div>
+<div class="bubble b2" aria-hidden="true"></div>
+<div class="bubble b3" aria-hidden="true"></div>
+<div class="bubble b4" aria-hidden="true"></div>
+<div class="bubble b5" aria-hidden="true"></div>
+<div class="bubble b6" aria-hidden="true"></div>
+<div class="bubble b7" aria-hidden="true"></div>
+<div class="bubble b8" aria-hidden="true"></div>
+// ...existing code...
+```// filepath: c:\Users\emmah\OneDrive - University of Pittsburgh\Desktop\pitt-fuego-webtext-generator-main\page 2.html
+// ...existing code...
+<style>
+/* --- Bubbles: add after your fish styles --- */
+.bubble {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4; /* above fish (z-index:3) and waves (z-index:0) */
+  opacity: 0.7;
+  will-change: transform, bottom, opacity;
+  box-shadow: inset -6px -6px 12px rgba(255,255,255,0.25);
+  backdrop-filter: blur(0.5px);
+}
+
+/* sizes, positions, speeds */
+.bubble.b1 { width: 34px; height: 34px; left: 12vw; animation: bubbleRise 9s linear infinite; animation-delay: 0s; background: rgba(203,230,255,0.9);}
+.bubble.b2 { width: 22px; height: 22px; left: 24vw; animation: bubbleRise 7s linear infinite; animation-delay: 1.2s; background: rgba(170,215,255,0.85);}
+.bubble.b3 { width: 46px; height: 46px; left: 36vw; animation: bubbleRise 11s linear infinite; animation-delay: 0.6s; background: rgba(220,240,255,0.9);}
+.bubble.b4 { width: 18px; height: 18px; left: 48vw; animation: bubbleRise 6.5s linear infinite; animation-delay: 2s; background: rgba(190,225,255,0.8);}
+.bubble.b5 { width: 28px; height: 28px; left: 60vw; animation: bubbleRise 8.5s linear infinite; animation-delay: 0.4s; background: rgba(210,235,255,0.88);}
+.bubble.b6 { width: 20px; height: 20px; left: 72vw; animation: bubbleRise 7.8s linear infinite; animation-delay: 1.6s; background: rgba(180,220,255,0.82);}
+.bubble.b7 { width: 38px; height: 38px; left: 84vw; animation: bubbleRise 10.5s linear infinite; animation-delay: 0.9s; background: rgba(225,245,255,0.9);}
+.bubble.b8 { width: 26px; height: 26px; left: 92vw; animation: bubbleRise 8.2s linear infinite; animation-delay: 2.4s; background: rgba(200,230,255,0.86); }
+
+@keyframes bubbleRise {
+  0% {
+    bottom: -80px;
+    opacity: 0.0;
+    transform: translateX(0) scale(0.85);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-18px) scale(1) rotate(-6deg);
+  }
+  70% {
+    transform: translateX(14px) scale(1.05) rotate(6deg);
+    opacity: 0.7;
+  }
+  100% {
+    bottom: 110vh;
+    opacity: 0;
+    transform: translateX(0) scale(1.15);
+  }
+}
+</style>
+
+style>
+.ocean-floor {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12vh;
+  min-height: 70px;
+  z-index: 1; /* above waves (0) but below page content (2) and fish (3) */
+  pointer-events: none;
+  overflow: visible;
+  background: linear-gradient(180deg, rgba(255,250,240,0) 0%, #e7d3a6 40%, #d2b57a 100%);
+  box-shadow: inset 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* seabed SVG scales to fill the floor area */
+.ocean-floor svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* decorative seaweed on the floor */
+.floor-weed {
+  fill: #2e8b57;
+  transform-origin: center bottom;
+  animation: weedSway 3.8s ease-in-out infinite;
+  opacity: 0.95;
+}
+.floor-weed.w2 { fill: #3cb371; animation-duration: 4.6s; opacity: 0.9; }
+.floor-weed.w3 { fill: #2fa66b; animation-duration: 3.2s; opacity: 0.85; }
+
+/* little rock and shell styles */
+.seabed-rock { fill: #7d6b54; opacity: 0.95; }
+.seabed-pebble { fill: #b89a7a; opacity: 0.95; }
+.seabed-shell { fill: #fff3e0; opacity: 0.95; transform-origin: center bottom; }
+
+/* subtle bob for shells */
+.shell-bob { animation: shellBob 5s ease-in-out infinite; }
+
+@keyframes weedSway {
+  0% { transform: rotate(-6deg); }
+  50% { transform: rotate(8deg); }
+  100% { transform: rotate(-6deg); }
+}
+@keyframes shellBob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* responsive floor height */
+@media (max-width:600px) {
+  .ocean-floor { height: 16vh; min-height: 80px; }
+}
+</style>
+
+<div class="ocean-floor" aria-hidden="true">
+  <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
+    <!-- sandy curve -->
+    <path d="M0 40 C150 10 350 60 600 40 C850 20 1050 70 1200 50 L1200 200 L0 200 Z"
+          fill="#e7d3a6" opacity="1"></path>
+
+    <!-- rocks -->
+    <ellipse class="seabed-rock" cx="120" cy="150" rx="60" ry="28"/>
+    <ellipse class="seabed-rock" cx="420" cy="158" rx="48" ry="22"/>
+    <ellipse class="seabed-rock" cx="900" cy="152" rx="70" ry="30"/>
+
+    <!-- pebbles -->
+    <circle class="seabed-pebble" cx="190" cy="168" r="4"/>
+    <circle class="seabed-pebble" cx="205" cy="162" r="3"/>
+    <circle class="seabed-pebble" cx="430" cy="174" r="3.5"/>
+    <circle class="seabed-pebble" cx="870" cy="170" r="4"/>
+    <circle class="seabed-pebble" cx="930" cy="166" r="2.8"/>
+
+    <!-- shells -->
+    <path class="seabed-shell shell-bob" d="M300 150 Q308 142 320 150 Q308 154 300 150" />
+    <path class="seabed-shell shell-bob" d="M760 156 Q768 148 780 156 Q768 160 760 156" />
+
+    <!-- seaweed clusters (floor) -->
+    <g transform="translate(140,120) scale(0.9)">
+      <path class="floor-weed" d="M10 60 C8 30 18 10 12 0 C16 14 8 38 10 60" />
+      <path class="floor-weed w2" d="M22 60 C20 34 30 16 26 6 C30 20 22 42 22 60" />
+    </g>
+
+    <g transform="translate(420,112) scale(1)">
+      <path class="floor-weed w3" d="M10 70 C6 40 20 20 14 6 C18 24 10 44 10 70" />
+      <path class="floor-weed w2" d="M26 70 C22 46 34 26 30 12 C34 28 26 50 26 70" />
+    </g>
+
+    <g transform="translate(920,122) scale(1.05)">
+      <path class="floor-weed" d="M10 65 C8 36 18 18 12 4 C16 22 8 44 10 65" />
+      <path class="floor-weed w3" d="M22 65 C20 40 30 20 26 8 C30 26 22 46 22 65" />
+    </g>
+  </svg>
+</div>
+// ...existing code...
+```// filepath: c:\Users\emmah\OneDrive - University of Pittsburgh\Desktop\pitt-fuego-webtext-generator-main\page 2.html
+// ...existing code...
+<!-- Add this just above the closing </body> tag to create an ocean floor -->
+<style>
+.ocean-floor {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12vh;
+  min-height: 70px;
+  z-index: 1; /* above waves (0) but below page content (2) and fish (3) */
+  pointer-events: none;
+  overflow: visible;
+  background: linear-gradient(180deg, rgba(255,250,240,0) 0%, #e7d3a6 40%, #d2b57a 100%);
+  box-shadow: inset 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* seabed SVG scales to fill the floor area */
+.ocean-floor svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* decorative seaweed on the floor */
+.floor-weed {
+  fill: #2e8b57;
+  transform-origin: center bottom;
+  animation: weedSway 3.8s ease-in-out infinite;
+  opacity: 0.95;
+}
+.floor-weed.w2 { fill: #3cb371; animation-duration: 4.6s; opacity: 0.9; }
+.floor-weed.w3 { fill: #2fa66b; animation-duration: 3.2s; opacity: 0.85; }
+
+/* little rock and shell styles */
+.seabed-rock { fill: #7d6b54; opacity: 0.95; }
+.seabed-pebble { fill: #b89a7a; opacity: 0.95; }
+.seabed-shell { fill: #fff3e0; opacity: 0.95; transform-origin: center bottom; }
+
+/* subtle bob for shells */
+.shell-bob { animation: shellBob 5s ease-in-out infinite; }
+
+@keyframes weedSway {
+  0% { transform: rotate(-6deg); }
+  50% { transform: rotate(8deg); }
+  100% { transform: rotate(-6deg); }
+}
+@keyframes shellBob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* responsive floor height */
+@media (max-width:600px) {
+  .ocean-floor { height: 16vh; min-height: 80px; }
+}
+</style>
+
+<div class="ocean-floor" aria-hidden="true">
+  <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
+    <!-- sandy curve -->
+    <path d="M0 40 C150 10 350 60 600 40 C850 20 1050 70 1200 50 L1200 200 L0 200 Z"
+          fill="#e7d3a6" opacity="1"></path>
+
+    <!-- rocks -->
+    <ellipse class="seabed-rock" cx="120" cy="150" rx="60" ry="28"/>
+    <ellipse class="seabed-rock" cx="420" cy="158" rx="48" ry="22"/>
+    <ellipse class="seabed-rock" cx="900" cy="152" rx="70" ry="30"/>
+
+    <!-- pebbles -->
+    <circle class="seabed-pebble" cx="190" cy="168" r="4"/>
+    <circle class="seabed-pebble" cx="205" cy="162" r="3"/>
+    <circle class="seabed-pebble" cx="430" cy="174" r="3.5"/>
+    <circle class="seabed-pebble" cx="870" cy="170" r="4"/>
+    <circle class="seabed-pebble" cx="930" cy="166" r="2.8"/>
+
+    <!-- shells -->
+    <path class="seabed-shell shell-bob" d="M300 150 Q308 142 320 150 Q308 154 300 150" />
+    <path class="seabed-shell shell-bob" d="M760 156 Q768 148 780 156 Q768 160 760 156" />
+
+    <!-- seaweed clusters (floor) -->
+    <g transform="translate(140,120) scale(0.9)">
+      <path class="floor-weed" d="M10 60 C8 30 18 10 12 0 C16 14 8 38 10 60" />
+      <path class="floor-weed w2" d="M22 60 C20 34 30 16 26 6 C30 20 22 42 22 60" />
+    </g>
+
+    <g transform="translate(420,112) scale(1)">
+      <path class="floor-weed w3" d="M10 70 C6 40 20 20 14 6 C18 24 10 44 10 70" />
+      <path class="floor-weed w2" d="M26 70 C22 46 34 26 30 12 C34 28 26 50 26 70" />
+    </g>
+
+    <g transform="translate(920,122) scale(1.05)">
+      <path class="floor-weed" d="M10 65 C8 36 18 18 12 4 C16 22 8 44 10 65" />
+      <path class="floor-weed w3" d="M22 65 C20 40 30 20 26 8 C30 26 22 46 22 65" />
+    </g>
+  </svg>
+</div>
+
+
+  </body>
+     </html>
+
+
+
+
+     <!--Looking to add components? You've come to the right place. Copy and paste Code Snippets and add to the body section. Adjust class properties on style.css.
+
+
+        
+     Looking to publish this webtext in GitHub? Here are your next steps:
+
+     Sign in to GitHub. Create a new repository. Name it. Click “uploading an existing file,” then select/drag and drop all of your files... all of them, index.html. style.css, readme, and your image assets. Click "commit." Now go to your repository "settings." Scroll down to "Pages." Here you will change "source" from "none" to "main" branch. This will publish your webtext online. Copy your URL from this settings page...and now it's time to circulate your webtext! Peace and love only, Stephen Quigley, University of Pittsburgh, 2021.-->
+
+
+
+       <!--Looking to add components? You've come to the right place. Copy and paste Code Snippets and add to the body section. Adjust class CSS properties on style.css.
+
+
+    ***Add Text Block***
+
+    (Format textblock using inline styling: text-align: left, center, justify, right. To improve accessibility, always left-align text longer than three lines; Format text: <i>italics</i>; <b>bold</b>; <u>underline</u>; <mark>highlight</mark>; <sup>superscript</sup>; <sub>subscript</sub>; Link Website: <a href="link">LinkName</a>; Line Breaks: <br></br>;
+
+  <div class="text-block" style="text-align: left">
+    <h2>Header</h2>
+       <p>We recommend using our mobile-ready text sizing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+
+
+    ***Add Pull Quote***
+
+    (Format text: Italics: <i>italics</i>; Bold: <b>bold</b>. Change font and font size using CSS)
+
+  <div class="pull-quote" style="text-align: center">
+    <h2>Excepteur sint occaecat cupidatat non proident!</h2>
+  </div>
+
+
+
+    ***Bulleted Points or List***
+
+    (Nest within text-block or style using CSS. Change <ul> to <ol> in HTML to switch from unordered list to ordered list.)
+
+  <div>
+    <ul>
+      <li>first</li>
+      <li>second</li>
+      <li>third</li>
+    </ul>
+  </div>
+
+
+
+    ***Add Link that Looks Like a Button***
+
+    (Clearly label link action. For more stylings, find button-box class properties on style.css)
+
+  <div class="button-box">
+    <a href="https://pitt-fuego.github.io/Pitt-Fuego-Coding-Tools/" class="button">Go to Fuego</a>
+  </div>
+
+
+
+    ***Add CSS Flexbox Container with Placeholder Images***
+
+    (Add or subtract columns. Control column width using CSS.)
+
+  <div class="flexbox-container">
+    <div class="row">
+        <div class="column">
+            <img src="pgrid1.jpg" alt="describe the image HERE for accessibility purposes">
+            <img src="pgrid2.jpg" alt="describe the image HERE for accessibility purposes">
+        </div>
+        <div class="column">
+            <img src="pgrid3.jpg" alt="describe the image HERE for accessibility purposes">
+            <img src="pgrid4.jpg" alt="describe the image HERE for accessibility purposes">
+        </div>
+        <div class="column">
+            <img src="pgrid5.jpg" alt="describe the image HERE for accessibility purposes">
+            <img src="pgrid6.jpg" alt="describe the image HERE for accessibility purposes">
+        </div>
+    </div>
+        <p><i>Add a caption.</i></p>
+  </div>
+
+
+
+    ***Add Image Frame and Filters***
+
+    (Control image width using inline styling. Adjust "frame" class properties using CSS.)
+
+  <img class="frame" src="codela.jpg" width="50%" alt="describe the image HERE for accessibility purposes">
+    <div class="caption">
+      <p><i>Add a caption</i></p>
+    </div>
+  
+
+
+
+    ***Add Polaroid***
+
+    (Control image width using CSS.)
+
+  <div class="polaroid">
+    <img src="polaroid.jpg" alt="describe the image HERE for accessibility purposes">
+      <div class="polaroid-caption">
+        <p><i>Add a caption</i></p>
+      </div>
+  </div>
+
+
+
+      ***Add Image Container with Text Box***
+
+      (Control Image Container properties using CSS.)
+
+  <div class="image-container">
+    <img src="fuego.jpg" alt="describe image here">
+      <div class="image-container-text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+  </div>
+
+
+
+    ***Add Parallax Window***
+
+      (Adjust window height using parallax class on style.css)
+
+  <div class="parallax"></div>
+    <div class="caption">
+      <p><i>Add a caption.</i></p>
+  </div>
+
+
+
+     ***Embed YouTube Video***
+
+  <div class="video">
+    <div class="video-container">
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/KVUBbM7pIYw?si=S02HKRwmh-psrWHJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+         <p>Add a caption.</p>
+  </div>
+
+
+    ***Add Copyright Footer***
+
+  <div class="footer">
+    <p><i>Copyright Your Name, Year.</i></p>
+  </div>
+
+
+
+    ***Need something that's not here? Go to https://www.w3schools.com to find all kinds of resources to facilitate your code learning.***
