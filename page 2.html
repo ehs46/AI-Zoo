@@ -484,6 +484,198 @@ style>
   </svg>
 </div>
 
+<style>
+/* Octopus: swims vertically; tentacles sway */
+.octopus {
+  position: fixed;
+  bottom: 14vh;
+  left: 18vw;
+  width: 180px;
+  height: 160px;
+  z-index: 5;
+  pointer-events: none;
+  transform-origin: center bottom;
+  animation: octo-swim 4s ease-in-out infinite;
+}
+@keyframes octo-swim {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-42px); }
+  100% { transform: translateY(0); }
+}
+
+.octopus svg { width: 100%; height: 100%; display: block; }
+
+/* Tentacle sway: rotate around top of each tentacle */
+.tentacle {
+  transform-origin: 50% 0%;
+  animation: tentacle-sway 1.6s ease-in-out infinite;
+}
+.tentacle.t1 { animation-delay: 0s; }
+.tentacle.t2 { animation-delay: 0.12s; }
+.tentacle.t3 { animation-delay: 0.24s; }
+.tentacle.t4 { animation-delay: 0.08s; }
+.tentacle.t5 { animation-delay: 0.18s; }
+.tentacle.t6 { animation-delay: 0.3s; }
+
+@keyframes tentacle-sway {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(12deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* subtle bob/rotate for head to feel organic */
+.octopus .head { transform-origin: center center; animation: head-rock 4s ease-in-out infinite; }
+@keyframes head-rock {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+</style>
+
+<!-- Octopus SVG -->
+<div class="octopus" aria-hidden="false" aria-label="Animated octopus">
+  <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="octTitle">
+    <title id="octTitle">Swimming octopus</title>
+
+    <!-- body / head -->
+    <g class="head">
+      <ellipse cx="100" cy="60" rx="62" ry="46" fill="#8e44ad"/>
+      <ellipse cx="100" cy="66" rx="46" ry="32" fill="#9b59b6" opacity="0.9"/>
+      <circle cx="78" cy="60" r="6" fill="#fff"/>
+      <circle cx="122" cy="60" r="6" fill="#fff"/>
+      <circle cx="78" cy="61.5" r="2.2" fill="#111"/>
+      <circle cx="122" cy="61.5" r="2.2" fill="#111"/>
+      <path d="M88 76 Q100 86 112 76" stroke="#5e2b6c" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- tentacles (6 shown) -->
+    <g fill="#8e44ad" stroke="#7a2e8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path class="tentacle t1" d="M40 100 C34 120 36 148 50 160 C62 170 74 166 82 156" />
+      <path class="tentacle t2" d="M65 106 C62 126 66 150 84 160 C98 168 110 162 118 150" />
+      <path class="tentacle t3" d="M90 112 C90 134 96 156 116 162 C130 166 142 160 150 150" />
+      <path class="tentacle t4" d="M110 112 C120 132 126 152 144 156 C156 160 168 154 176 142" />
+      <path class="tentacle t5" d="M125 106 C136 126 138 148 158 154 C170 158 180 152 188 138" />
+      <path class="tentacle t6" d="M152 102 C156 122 156 142 170 150 C182 158 194 152 200 138" />
+    </g>
+
+    <!-- small underside highlights -->
+    <g opacity="0.12" fill="#ffffff">
+      <ellipse cx="72" cy="86" rx="8" ry="4"/>
+      <ellipse cx="120" cy="90" rx="6" ry="3"/>
+    </g>
+  </svg>
+</div>
+
+<style>
+/* Crab walking across bottom */
+.crab {
+  position: fixed;
+  bottom: 10vh;                 /* sits above the ocean floor */
+  left: -180px;                 /* start off-screen */
+  width: 140px;
+  height: 90px;
+  z-index: 6;                   /* above fish/bubbles */
+  pointer-events: none;
+  transform-origin: center bottom;
+  animation: crab-walk 18s linear infinite, crab-bob 0.9s ease-in-out infinite alternate;
+}
+
+/* horizontal walk */
+@keyframes crab-walk {
+  0%   { left: -220px; }
+  50%  { left: 50vw; }
+  100% { left: 118vw; }
+}
+
+/* little vertical bob */
+@keyframes crab-bob {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* leg movement */
+.crab .leg {
+  transform-origin: top center;
+  animation: leg-wave 0.36s ease-in-out infinite;
+}
+.crab .leg.l1 { animation-delay: 0s; }
+.crab .leg.l2 { animation-delay: 0.06s; }
+.crab .leg.l3 { animation-delay: 0.12s; }
+.crab .leg.l4 { animation-delay: 0.06s; }
+.crab .leg.l5 { animation-delay: 0.12s; }
+.crab .leg.l6 { animation-delay: 0s; }
+
+@keyframes leg-wave {
+  0%   { transform: rotate(0deg) translateY(0); }
+  50%  { transform: rotate(12deg) translateY(2px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* claws waving */
+.crab .claw-left, .crab .claw-right {
+  transform-origin: 8px 10px;
+  animation: claw-wave 0.9s ease-in-out infinite alternate;
+}
+.crab .claw-right { animation-delay: 0.12s; }
+
+@keyframes claw-wave {
+  from { transform: rotate(0deg) translateY(0); }
+  to   { transform: rotate(-12deg) translateY(-4px); }
+}
+
+/* small eye look */
+.crab .eye { transform-origin: center; animation: eye-blink 6s steps(1,end) infinite; }
+@keyframes eye-blink { 0%,95% { transform: scaleY(1); } 97% { transform: scaleY(0.12); } 100% { transform: scaleY(1); } }
+</style>
+
+<!-- Crab HTML/SVG -->
+<div class="crab" aria-hidden="true" role="img" aria-label="Walking crab">
+  <svg viewBox="0 0 200 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <!-- body -->
+    <g>
+      <ellipse cx="100" cy="60" rx="58" ry="32" fill="#e2543d" stroke="#b53b2a" stroke-width="2"/>
+      <!-- shell highlight -->
+      <ellipse cx="85" cy="52" rx="20" ry="10" fill="#ff7a61" opacity="0.35"/>
+    </g>
+
+    <!-- eyes on stalks -->
+    <g transform="translate(0,-6)">
+      <path d="M68 32 Q64 14 82 20" stroke="#e2543d" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M132 32 Q136 14 118 20" stroke="#e2543d" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle class="eye" cx="82" cy="16" r="5" fill="#fff"/>
+      <circle class="eye" cx="118" cy="16" r="5" fill="#fff"/>
+      <circle cx="82" cy="17.5" r="2" fill="#111"/>
+      <circle cx="118" cy="17.5" r="2" fill="#111"/>
+    </g>
+
+    <!-- claws -->
+    <g fill="#e2543d" stroke="#b53b2a" stroke-width="2">
+      <g class="claw-left">
+        <path d="M38 58 Q18 50 30 36 Q46 26 58 44 Z"/>
+        <ellipse cx="30" cy="36" rx="6" ry="5" fill="#ffb3a6"/>
+      </g>
+      <g class="claw-right">
+        <path d="M162 58 Q182 50 170 36 Q154 26 142 44 Z"/>
+        <ellipse cx="170" cy="36" rx="6" ry="5" fill="#ffb3a6"/>
+      </g>
+    </g>
+
+    <!-- legs: six per side (3 left, 3 right) -->
+    <g stroke="#b53b2a" stroke-width="4" stroke-linecap="round" fill="none">
+      <!-- left legs -->
+      <path class="leg l1" d="M58 78 Q40 86 30 102"/>
+      <path class="leg l2" d="M72 80 Q54 92 44 106"/>
+      <path class="leg l3" d="M88 82 Q74 94 62 108"/>
+
+      <!-- right legs (mirror) -->
+      <path class="leg l4" d="M142 78 Q160 86 170 102"/>
+      <path class="leg l5" d="M128 80 Q146 92 156 106"/>
+      <path class="leg l6" d="M112 82 Q126 94 138 108"/>
+    </g>
+  </svg>
+</div>
+
+
 
   </body>
      </html>
